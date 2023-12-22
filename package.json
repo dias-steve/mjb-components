@@ -1,0 +1,41 @@
+{
+  "name": "component-react-native-mjb",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dias-steve/mjb-components.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Steve Dias",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "*",
+    "@types/react-native": "*",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "react-native-reanimated": "*",
+    "@expo/vector-icons": "^13.0.0",
+    "@react-native-community/datetimepicker": "^7.2.0",
+    "expo-blur": "^12.6.0",
+    "expo-document-picker": "^11.7.0",
+    "react-native-gesture-handler": "^2.14.0",
+    "react-native-paper": "^5.11.4",
+    "react-native-progress": "^5.0.1",
+    "react-native-safe-area-context": "*",
+    "react-native-svg": "13.9.0"
+  },
+
+  "dependencies": {
+
+  }
+}
