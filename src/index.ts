@@ -17,9 +17,13 @@ import HorizontalSelectorInputMJB from "./components/atoms/HorizontalSelectorInp
 import NumberPickerMJB from "./components/atoms/NumberPicker/NumberPicker"
 import BigModalDrawerMJB from "./components/molecules/BigModalDrawer/BigModalDrawer";
 
+import TextBoxMJB from "./components/molecules/TextBox/TextBox";
+
 import  FileUploaderInputMJB  from "./components/molecules/FileUploaderInput/FileUploaderInput";
 import ModalwithBackgroundMJB from "./components/molecules/ModalwithBackground/ModalwithBackground"
 import useInfoModalV2 from "./components/organism/InfoModalV2/context/infoModalV2Context";
+
+import { TextBoxItemPropsMJB, TextBoxPropsMJB } from "./components/molecules/TextBox/TextBox";
 /**
  * All customs styled components for MJB
  */
@@ -36,6 +40,8 @@ export const HorizontalSelectorInput = HorizontalSelectorInputMJB
 export const NumberPicker = NumberPickerMJB
 export const DatePicker = DatePickerMJB
 
+export const TextBox = TextBoxMJB
+
 export const BigModalDrawer = BigModalDrawerMJB
 export const FilePikerInput = FileUploaderInputMJB
 export const ModalwithBackground = ModalwithBackgroundMJB
@@ -45,5 +51,8 @@ export const useInfoModal = useInfoModalV2
  * Type exports
  */
 export type ThemeContext = ThemeContextMJB
+
+export type TextBoxItemProps = TextBoxItemPropsMJB 
+export type TextBoxProps = TextBoxPropsMJB
 
 
