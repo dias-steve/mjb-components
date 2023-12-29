@@ -4,7 +4,7 @@
 /**
  * Text box
  */
-import { StyleSheet, Text, View } from "react-native";
+import { DimensionValue, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useThemeMJB } from "../../../ThemeProvider/ThemeProvider";
 
@@ -26,6 +26,7 @@ export interface TextBoxPropsMJB {
   fontColor?: string;
   isPrimaryColorBackground?: boolean;
   unitLabelSize?: number;
+  height?: DimensionValue ;
 }
 
 const TextBoxItem = ({
@@ -68,6 +69,7 @@ const TextBoxItem = ({
   });
   return (
     <View style={styles['text-box-item']}>
+  
         {
             title !== undefined &&
             <Text style={styles['text-box-item__title']}>{title}</Text>
@@ -92,13 +94,14 @@ const TextBoxItem = ({
  * @param param0 
  * @returns 
  */
-const TextBox = ({ content, titleSize, unitLabelSize, textSize, fontColor, colorBackground, isPrimaryColorBackground }: TextBoxPropsMJB) => {
+const TextBox = ({ content, titleSize, unitLabelSize, textSize, fontColor, colorBackground, isPrimaryColorBackground, height }: TextBoxPropsMJB) => {
   const {theme: {color, fontFamily}} = useThemeMJB()
   const styles = StyleSheet.create({
     ['text-box'] : {
         backgroundColor: colorBackground ? colorBackground : (isPrimaryColorBackground ? color.primary.normal: color.otherColor.gray.light),
         padding: 20,
         borderRadius: 24,
+        height: height ? height : 'auto'
     }
 
   });
