@@ -123,7 +123,7 @@ const colorOnfocus = color.primary.darker
       } ><Animated.Text style={[styles['text-input__placeholder-text-container__placeholder-text'], {
             
           fontSize: fontSizeLabel
-      }]}>{'okppp'+placeholder}
+      }]}>{placeholder}
       
       </Animated.Text>
       </Animated.View>
