@@ -277,6 +277,9 @@ const TextBox = ({
       justifyContent:'flex-end',
       fontFamily: fontFamily.primary.regular,
     },
+    ['text-box__right-container__header__icon__icon']:{
+      opacity: 0.5
+    }
   });
 
   if (!content) {
@@ -294,7 +297,7 @@ const TextBox = ({
                IconRight ? <IconRight/> : 
                (<>
                 {
-                  icon && <View ><Icon color={fontColor}type={icon}/></View>
+                  icon && <View style={styles['text-box__right-container__header__icon__icon']} ><Icon color={fontColor}type={icon}/></View>
                 }
                </>
 
