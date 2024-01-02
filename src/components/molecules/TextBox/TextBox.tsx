@@ -330,7 +330,11 @@ const TextBox = ({
       {button && (
         <View style={styles["text-box__button-container"]}>
           {button.map((buttonData, index) => {
-            return <Button key={index} {...buttonData} />;
+            const buttonProps = {
+              ...buttonData,
+              fontColor: fontColor ? fontColor : buttonData.fontColor
+            }
+            return <Button key={index} {...buttonProps} />;
           })}
         </View>
       )}
