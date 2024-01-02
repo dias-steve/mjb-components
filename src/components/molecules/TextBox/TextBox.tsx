@@ -140,6 +140,7 @@ const TextBoxItem = ({
       fontFamily: fontFamily.secondary.regular,
       fontSize: subTextSize ? subTextSize : 14,
       lineHeight: subTextHeightLine ? subTextHeightLine : 24,
+      color: fontColor ? fontColor : color.secondary.normal,
     },
     ["text-box-item__text-container"]: {
       marginTop: 5,
