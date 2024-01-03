@@ -24,6 +24,7 @@ import ModalwithBackgroundMJB from "./components/molecules/ModalwithBackground/M
 import useInfoModalV2 from "./components/organism/InfoModalV2/context/infoModalV2Context";
 
 import { TextBoxItemPropsMJB, TextBoxPropsMJB } from "./components/molecules/TextBox/TextBox";
+import FlatListMJB, { FlatListPropsMJB } from "./components/molecules/FlatListMJB/FlatListMJB";
 /**
  * All customs styled components for MJB
  */
@@ -42,6 +43,8 @@ export const DatePicker = DatePickerMJB
 
 export const TextBox = TextBoxMJB
 
+export const FlatList = FlatListMJB
+
 export const BigModalDrawer = BigModalDrawerMJB
 export const FilePikerInput = FileUploaderInputMJB
 export const ModalwithBackground = ModalwithBackgroundMJB
@@ -50,6 +53,8 @@ export const useInfoModal = useInfoModalV2
 /**
  * Type exports
  */
+
+export type FlatListProps = FlatListPropsMJB
 export type ThemeContext = ThemeContextMJB
 
 export type TextBoxItemProps = TextBoxItemPropsMJB 
