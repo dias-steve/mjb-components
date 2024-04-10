@@ -1,5 +1,5 @@
 import { ListRenderItem, StyleSheet, View, FlatList, RefreshControl  } from 'react-native'
-import React, { ComponentType, JSXElementConstructor, ReactElement, useState } from 'react'
+import React, { ComponentType, FC, JSXElementConstructor, ReactElement, useState } from 'react'
 
 
 export interface FlatListPropsMJB {
@@ -21,9 +21,11 @@ export interface FlatListPropsMJB {
 
     ListEmptyComponent: ComponentType<any> | ReactElement<any, string | JSXElementConstructor<any>> | null | undefined
 
+    ListFooterComponent?: FC
+
 }
 
-const FlatListMJB = ({limit, filtered, footerGap, data, disabledScroll, renderItem,  ListEmptyComponent, onPull, isLoading, ...otherScroll}:FlatListPropsMJB) => {
+const FlatListMJB = ({limit, filtered, footerGap, data, disabledScroll, renderItem,  ListEmptyComponent, onPull, isLoading,ListFooterComponent, ...otherScroll}:FlatListPropsMJB) => {
     const [isRefreshing, setRefreshing] = useState<boolean>(false)
     return (
                 <FlatList
@@ -37,7 +39,7 @@ const FlatListMJB = ({limit, filtered, footerGap, data, disabledScroll, renderIt
                     refreshing={(isRefreshing || isLoading) || false}
                     onRefresh={() => onPull(setRefreshing)}
                 />: undefined}
-                ListFooterComponent={<View style={{height: footerGap ? footerGap : 0}}></View>}
+                ListFooterComponent={<>{ListFooterComponent &&<ListFooterComponent/>} <View style={{height: footerGap ? footerGap : 0}}></View></>}
             />
   )
 }
