@@ -39,7 +39,7 @@ const FlatListMJB = ({limit, filtered, footerGap, data, disabledScroll, renderIt
                     refreshing={(isRefreshing || isLoading) || false}
                     onRefresh={() => onPull(setRefreshing)}
                 />: undefined}
-                ListFooterComponent={<>{ListFooterComponent &&<ListFooterComponent/>} <View style={{height: footerGap ? footerGap : 0}}></View></>}
+                ListFooterComponent={<>{ListFooterComponent &&<ListFooterComponent/>}<View style={{height: footerGap ? footerGap : 0}}></View></>}
             />
   )
 }
