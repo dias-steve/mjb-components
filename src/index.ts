@@ -25,6 +25,7 @@ import useInfoModalV2 from "./components/organism/InfoModalV2/context/infoModalV
 
 import { TextBoxItemPropsMJB, TextBoxPropsMJB } from "./components/molecules/TextBox/TextBox";
 import FlatListMJB, { FlatListPropsMJB } from "./components/molecules/FlatListMJB/FlatListMJB";
+import MultiButtonMjB, { ButtonItemPropsMJB, MultiButtonPropsMJB } from "./components/atoms/MultiButtion/MultiButton";
 /**
  * All customs styled components for MJB
  */
@@ -59,5 +60,10 @@ export type ThemeContext = ThemeContextMJB
 
 export type TextBoxItemProps = TextBoxItemPropsMJB 
 export type TextBoxProps = TextBoxPropsMJB
+
+// MultiButton
+export const MultiButton = MultiButtonMjB
+export type MultiButtonProps = MultiButtonPropsMJB
+export type ButtonItemProps = ButtonItemPropsMJB
 
 
