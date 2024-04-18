@@ -8,6 +8,7 @@ export interface ButtonItemPropsMJB {
     onPress?: () => void;
     IconRenderRight?: FC;
     color?: string;
+    fontSize?: number;
 }
 export interface MultiButtonPropsMJB {
     buttonsList: ButtonItemPropsMJB[];
@@ -51,7 +52,7 @@ export default function MultiButtonMjB({buttonsList}: MultiButtonPropsMJB) {
   )
 }
 
-export const ButtonItemMJB = ({title, onPress, IconRenderRight, color}: ButtonItemPropsMJB) => {
+export const ButtonItemMJB = ({title, onPress, IconRenderRight, color, fontSize}: ButtonItemPropsMJB) => {
         const {theme: {color : colorTheme, fontFamily}} = useThemeMJB()
     const styles : any = StyleSheet.create({
 
@@ -64,7 +65,7 @@ export const ButtonItemMJB = ({title, onPress, IconRenderRight, color}: ButtonIt
             padding:10
         },
         ['button__title']: {
-            fontSize: 18,
+            fontSize: fontSize || 17,
             fontFamily: fontFamily.secondary.regular,
             color: color ||colorTheme.secondary.normal,
         },

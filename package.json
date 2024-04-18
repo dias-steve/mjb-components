@@ -1,6 +1,6 @@
 {
   "name": "component-react-native-mjb",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "test",
   "main": "src/index.ts",
   "scripts": {
