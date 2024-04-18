@@ -43,7 +43,7 @@ export default function MultiButtonMjB({buttonsList}: MultiButtonPropsMJB) {
         {
             buttonsList.map((button, index) => (
                 <>
-                {index !== 0 && <View style={styles['separator']}/>}
+                {index !== 0 && <View key={index+'sep-890_mjb2651'} style={styles['separator']}/>}
                     <ButtonItemMJB key={index} {...button} />
                 </>
             ))
