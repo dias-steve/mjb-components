@@ -30,6 +30,8 @@ const DatePicker = ( {placeholder, value: date, setValue: setDate, maximumDate, 
     const {theme: {color, fontFamily}} = useThemeMJB()
 
 
+
+
     const styles = StyleSheet.create({
         ['selector-container']:{
     
@@ -73,13 +75,31 @@ const DatePicker = ( {placeholder, value: date, setValue: setDate, maximumDate, 
         setDate(currentDate)
         let tempDate = new Date(currentDate);
         let fDate =dataObjectToString(tempDate)
-        let fTime = 'Hours: ' +tempDate.getHours() + ' Minutes: '+ tempDate.getMinutes
-        setText(fDate)
+        let fTime = '' +tempDate.getHours() + ':'+ tempDate.getMinutes
+
+
+        const dateTimedisplayed = () => {
+            switch (mode) {
+                case 'date':
+                    return fDate
+                case 'time':
+                    return fTime
+                case 'datetime':
+                    return fDate + ' ' + fTime
+                default:
+                    return fDate
+            }
+        }
+
+        setText(dateTimedisplayed())
+
     }
     const showMode = () => {
         setShow(true);
  
     }
+
+
   return (
     <>
     <View style={styles['selector-container']}>
