@@ -14,13 +14,18 @@ import { useThemeMJB } from '../../../ThemeProvider/ThemeProvider';
 export interface DatePickerPropsInput{
     placeholder: string, 
     value: Date | null | undefined,
-    setValue: (date: Date) => void 
+    setValue: (date: Date) => void,
+    minimumDate?: Date,
+    maximumDate?: Date,
+    colorText?: string,
+    mode?: 'date' | 'time' | 'datetime'
+    is24Hour?: boolean
 }
 
-const DatePicker = ( {placeholder, value: date, setValue: setDate }: DatePickerPropsInput) => {
+const DatePicker = ( {placeholder, value: date, setValue: setDate, maximumDate, minimumDate, colorText, mode = 'date', is24Hour }: DatePickerPropsInput) => {
    
     const [show, setShow] = useState(false)
-    const [mode, setMode] = useState<any>('date')
+
     const [text, setText] = useState<string | null>()
     const {theme: {color, fontFamily}} = useThemeMJB()
 
@@ -71,27 +76,45 @@ const DatePicker = ( {placeholder, value: date, setValue: setDate }: DatePickerP
         let fTime = 'Hours: ' +tempDate.getHours() + ' Minutes: '+ tempDate.getMinutes
         setText(fDate)
     }
-    const showMode = (currentMode: any) => {
+    const showMode = () => {
         setShow(true);
-        setMode(currentMode)
+ 
     }
   return (
     <>
     <View style={styles['selector-container']}>
     <Text  style={styles['selector-container__placehoder']}>{placeholder}</Text>
-    <Pressable style={styles['selector-container__selector']} onPress={() => showMode('date')}>
+    <Pressable style={styles['selector-container__selector']} onPress={() => showMode()}>
         <Text style={styles['selector-container__selector__value']}>{text}</Text>
     </Pressable>
     </View>
     {
         show && (
+            mode ? 
             <DateTimePicker
+            minimumDate={minimumDate}
+            maximumDate={minimumDate}
+            testID='dateTimePicker'
+            value={date || new Date}
+            mode={mode}
+            display='default'
+            onChange={onChange}
+            textColor={colorText}
+        />
+
+            :
+            <DateTimePicker
+                minimumDate={minimumDate}
+                maximumDate={minimumDate}
                 testID='dateTimePicker'
                 value={date || new Date}
                 mode={mode}
-                is24Hour={true}
+                is24Hour={is24Hour}
                 display='default'
                 onChange={onChange}
+                textColor={colorText}
+      
+                
             />
         )
     }
