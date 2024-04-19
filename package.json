@@ -1,6 +1,6 @@
 {
   "name": "component-react-native-mjb",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "test",
   "main": "src/index.ts",
   "scripts": {
@@ -32,10 +32,7 @@
     "react-native-paper": "^5.11.4",
     "react-native-progress": "^5.0.1",
     "react-native-safe-area-context": "*",
-    "react-native-svg": "13.9.0"
-  },
-
-  "dependencies": {
-
+    "react-native-svg": "13.9.0",
+    "@react-native-picker/picker": "2.4.10"
   }
 }
