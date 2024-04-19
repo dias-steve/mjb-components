@@ -14,22 +14,22 @@ import DateTimePicker from '@react-native-community/datetimepicker'
 import { dataObjectToString } from '../../../utils/dateConverter';
 import { useThemeMJB } from '../../../ThemeProvider/ThemeProvider';
 
-export interface PickerPropsInput{
+export interface PickerPropsInputMJB{
     placeholder?: string, 
     value?: any| null | undefined,
     setValue?: (item: any | null) => void,
     maxWidth?:  DimensionValue ,
     width?: DimensionValue,
-    items?: PickerItem[]
+    items?: PickerItemMJB[]
 }
 
-export interface PickerItem{
+export interface PickerItemMJB{
     value: string,
     label: string,
     key: string | number
 
 }
-const PickerDropdown  = ( {placeholder, value, maxWidth, width,items, setValue }: PickerPropsInput) => {
+export const PickerDropdownMJB  = ( {placeholder, value, maxWidth, width,items, setValue }: PickerPropsInputMJB) => {
    
     const [show, setShow] = useState(false)
 
@@ -107,5 +107,5 @@ const PickerDropdown  = ( {placeholder, value, maxWidth, width,items, setValue }
   )
 }
 
-export default PickerDropdown 
+export default PickerDropdownMJB
 
