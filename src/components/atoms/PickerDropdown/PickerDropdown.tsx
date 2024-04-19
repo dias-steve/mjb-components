@@ -97,7 +97,7 @@ export const PickerDropdownMJB  = ( {placeholder, value, maxWidth, width,items, 
   }>
         {
             items?.map((item, index) => {
-                return <Picker.Item key={index} label={item.label} value={item.value} />
+                return <Picker.Item key={index} label={item.label} value={item.key} />
             })
         }
         </Picker>
