@@ -5,7 +5,7 @@
  * Date Picker MBJ
  */
 
-import { Platform, Pressable, StyleSheet, Text, View } from 'react-native'
+import { DimensionValue, Platform, Pressable, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import DateTimePicker from '@react-native-community/datetimepicker'
 import { dataObjectToString } from '../../../utils/dateConverter';
@@ -20,8 +20,8 @@ export interface DatePickerPropsInput{
     colorText?: string,
     mode?: 'date' | 'time' | 'datetime'
     is24Hour?: boolean
-    maxWidth?: number,
-    width?: number
+    maxWidth?:  DimensionValue ,
+    width?: DimensionValue 
 }
 
 const DatePicker = ( {placeholder, value: date, setValue: setDate, maximumDate, minimumDate, colorText, mode = 'date', is24Hour, maxWidth, width }: DatePickerPropsInput) => {
