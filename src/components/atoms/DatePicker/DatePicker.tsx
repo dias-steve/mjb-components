@@ -21,10 +21,11 @@ export interface DatePickerPropsInput{
     mode?: 'date' | 'time' | 'datetime'
     is24Hour?: boolean
     maxWidth?:  DimensionValue ,
-    width?: DimensionValue 
+    width?: DimensionValue,
+    haveError?: boolean | undefined
 }
 
-const DatePicker = ( {placeholder, value: date, setValue: setDate, maximumDate, minimumDate, colorText, mode = 'date', is24Hour, maxWidth, width }: DatePickerPropsInput) => {
+const DatePicker = ( {placeholder, value: date, setValue: setDate, maximumDate, minimumDate, colorText, mode = 'date', is24Hour, maxWidth, width, haveError }: DatePickerPropsInput) => {
    
     const [show, setShow] = useState(false)
 
@@ -44,7 +45,12 @@ const DatePicker = ( {placeholder, value: date, setValue: setDate, maximumDate, 
             fontFamily: fontFamily.primary.regular,
             fontSize: 13,
             marginLeft: 15,
-            marginBottom: 4
+            marginBottom: 4,
+            
+        },
+
+        ['selector-container__placehoder--error']:{
+            color: color.otherColor.red.normal
         },
         ['selector-container__selector']:{
             height:50,
@@ -61,11 +67,20 @@ const DatePicker = ( {placeholder, value: date, setValue: setDate, maximumDate, 
             display: 'flex',
             justifyContent: 'center'
         },
+        ['selector-container__selector__value--error']:{
+            color: color.otherColor.red.normal
+        },
     
         ['selector-container__selector__value']:{
             fontFamily: fontFamily.primary.regular,
             fontSize: 15,
+           
         },
+
+        ['selector-container__selector--error']:{
+            borderColor: color.otherColor.red.normal,
+            color: color.otherColor.red.normal
+        }
     
     })
 
@@ -74,7 +89,7 @@ const DatePicker = ( {placeholder, value: date, setValue: setDate, maximumDate, 
         if (date){
             let fDate =dataObjectToString(date)
             let fTime = '' +date.getHours() + ':'+ date.getMinutes().toString().padStart(2, '0')
-            const stringDateTime = fDate + ' ' + fTime
+        
     
     
     
@@ -102,11 +117,6 @@ const DatePicker = ( {placeholder, value: date, setValue: setDate, maximumDate, 
         const currentDate = selectedDate || date;
         setShow(Platform.OS === 'ios');
         setDate(currentDate)
-        let tempDate = new Date(currentDate);
-   
-
-      
-
     }
     const showMode = () => {
         setShow(true);
@@ -117,9 +127,9 @@ const DatePicker = ( {placeholder, value: date, setValue: setDate, maximumDate, 
   return (
     <>
     <View style={styles['selector-container']}>
-    <Text  style={styles['selector-container__placehoder']}>{placeholder}</Text>
-    <Pressable style={styles['selector-container__selector']} onPress={() => showMode()}>
-        <Text style={styles['selector-container__selector__value']}>{text}</Text>
+    <Text  style={[styles['selector-container__placehoder'], haveError && styles['selector-container__placehoder--error'] ]}>{placeholder}</Text>
+    <Pressable style={[styles['selector-container__selector'],  haveError && styles['selector-container__selector--error']]} onPress={() => showMode()}>
+        <Text style={[styles['selector-container__selector__value'],  haveError && styles['selector-container__selector__value--error']]}>{text}</Text>
     </Pressable>
     </View>
     {
