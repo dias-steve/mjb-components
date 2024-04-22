@@ -22,7 +22,11 @@ export interface InfoModalViewProps {
   iconType?: iconType
   noCloseButton?: boolean,
   progressBarvalue?: number | undefined,
-  loaderMode?: boolean
+  loaderMode?: boolean,
+  buttonAcceptLabel?: string,
+  buttonCancelLabel?: string,
+  onClickBtnAccept?: (utils:{closeModal?: () => void}) => void,
+  onClickBtnCancel?: (utils:{closeModal?: () => void}) => void,
 }
 
 
@@ -56,6 +60,12 @@ const withInfoModalData = (InfoModalView: FC<InfoModalViewProps>) => {
             noCloseButton={configData?.noBtnClose || false}
             progressBarvalue={configData?.progressBarvalue}
             loaderMode={configData?.loaderMode || false}
+            buttonAcceptLabel={configData?.acceptBtnLabel}
+            buttonCancelLabel={configData?.cancelBtnLabel}
+            onClickBtnAccept={configData?.onClickBtnAccept}
+            onClickBtnCancel={configData?.onClickBtnCancel}
+            
+            
           />
         </ModalwithBackground>
       </>

@@ -71,7 +71,18 @@ const iconSlector = (type: iconType ) => {
  * @param param0 
  * @returns 
  */
-const InfoModalView = ({handleClose, title, contentText, buttonLabel, iconType, noCloseButton,  progressBarvalue, loaderMode}: InfoModalViewProps) => {
+const InfoModalView = ({handleClose,
+    title,
+    contentText,
+    buttonLabel,
+    iconType,
+    noCloseButton,
+    progressBarvalue,
+    loaderMode,
+    onClickBtnAccept,
+    onClickBtnCancel,
+    buttonAcceptLabel = 'OK', 
+    buttonCancelLabel = 'Annuler'}: InfoModalViewProps) => {
     const {
         theme: { color, fontFamily },
       } = useThemeMJB();
@@ -130,6 +141,8 @@ const InfoModalView = ({handleClose, title, contentText, buttonLabel, iconType, 
             marginVertical: 5
     
         },
+
+
         ['modal-info__modal__loader']:{
             display: 'flex',
             height: '100%',
@@ -180,11 +193,24 @@ const InfoModalView = ({handleClose, title, contentText, buttonLabel, iconType, 
             }
 
             {
-                !noCloseButton &&
+                !noCloseButton && !onClickBtnAccept &&
                 <View style={styles['modal-info__modal__btn-container']}>
                     <Button name={buttonLabel || 'OK'} onPress={handleClose}/>
                 </View>
             }
+
+            { onClickBtnAccept &&
+                <View style={styles['modal-info__modal__btn-container']}>
+                    <Button name={buttonAcceptLabel} onPress={() => {onClickBtnAccept({closeModal: handleClose})}}/>
+                </View>
+            }
+
+            { onClickBtnCancel &&
+                <View style={[styles['modal-info__modal__btn-container'], styles['modal-info__modal__btn-container']]}>
+                    <Button name={buttonCancelLabel} onPress={() => {onClickBtnCancel({closeModal: handleClose})}} styleType={'secondary'}/>
+                </View>
+            }
+
             {
                 loaderMode &&
            

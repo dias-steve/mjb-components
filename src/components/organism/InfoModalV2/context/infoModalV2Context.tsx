@@ -27,7 +27,14 @@ export interface IConfigInfoModal {
      */
     progressBarvalue?: number,
 
-    loaderMode?: boolean
+    loaderMode?: boolean,
+
+
+    acceptBtnLabel ?: string,
+
+    cancelBtnLabel ?: string,
+    onClickBtnAccept?: (utils:{closeModal?: () => void}) => void,
+    onClickBtnCancel?: (utils:{closeModal?: () => void}) => void,
 }
 export interface IInfoModdalHandlerData {
     config :IConfigInfoModal | null,
