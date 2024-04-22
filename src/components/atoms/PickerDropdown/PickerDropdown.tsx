@@ -2,41 +2,38 @@
 import {Picker} from '@react-native-picker/picker';
 
 /*===================================================================
-=      PICKER               =
+=     PICKER               =
 ====================================================================*/
 /**
- * Picker MJB
+ * Picker MBJ
  */
 
-import { DimensionValue, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-
+import { DimensionValue, Platform, Pressable, StyleSheet, Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import DateTimePicker from '@react-native-community/datetimepicker'
+import { dataObjectToString } from '../../../utils/dateConverter';
 import { useThemeMJB } from '../../../ThemeProvider/ThemeProvider';
 
-export interface PickerPropsInput{
+export interface PickerPropsInputMJB{
     placeholder?: string, 
     value?: any| null | undefined,
     setValue?: (item: any | null) => void,
     maxWidth?:  DimensionValue ,
     width?: DimensionValue,
-    items?: PickerItem[]
+    items?: PickerItemMJB[]
 }
 
-export interface PickerItem{
+export interface PickerItemMJB{
     value: string,
     label: string,
-    key: string | number
 
 }
-const PickerDropdown  = ( {placeholder, value, maxWidth, width,items, setValue }: PickerPropsInput) => {
-
+export const PickerDropdownMJB  = ( {placeholder, value, maxWidth, width,items, setValue }: PickerPropsInputMJB) => {
+   
     const {theme: {color, fontFamily}} = useThemeMJB()
 
 
-    const setValuePicked = (key: any) => {
-        const valuePicked = items?.filter(item => item.value === key)[0]
-        setValue && setValue(valuePicked?.value)
-    }
+
 
 
     const styles = StyleSheet.create({
@@ -88,8 +85,8 @@ const PickerDropdown  = ( {placeholder, value, maxWidth, width,items, setValue }
     <View style={styles['selector-container__selector']}>
      <Picker 
      style={{width: '100%'}}
-        placeholder={placeholder} selectedValue={value}   onValueChange={(key, itemIndex) =>
-    setValuePicked(key)
+        placeholder={placeholder} selectedValue={value}   onValueChange={(value, itemIndex) =>
+     setValue && setValue(value)
   }>
         {
             items?.map((item, index) => {
@@ -103,5 +100,5 @@ const PickerDropdown  = ( {placeholder, value, maxWidth, width,items, setValue }
   )
 }
 
-export default PickerDropdown 
+export default PickerDropdownMJB
 
