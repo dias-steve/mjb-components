@@ -26,7 +26,6 @@ export interface PickerPropsInputMJB{
 export interface PickerItemMJB{
     value: string,
     label: string,
-    key: string | number
 
 }
 export const PickerDropdownMJB  = ( {placeholder, value, maxWidth, width,items, setValue }: PickerPropsInputMJB) => {
@@ -37,10 +36,7 @@ export const PickerDropdownMJB  = ( {placeholder, value, maxWidth, width,items, 
     const {theme: {color, fontFamily}} = useThemeMJB()
 
 
-    const setValuePicked = (key: any) => {
-        const valuePicked = items?.filter(item => item.value === key)[0]
-        setValue && setValue(valuePicked?.value)
-    }
+
 
 
     const styles = StyleSheet.create({
@@ -92,12 +88,12 @@ export const PickerDropdownMJB  = ( {placeholder, value, maxWidth, width,items, 
     <View style={styles['selector-container__selector']}>
      <Picker 
      style={{width: '100%'}}
-        placeholder={placeholder} selectedValue={value}   onValueChange={(key, itemIndex) =>
-    setValuePicked(key)
+        placeholder={placeholder} selectedValue={value}   onValueChange={(value, itemIndex) =>
+     setValue && setValue(value)
   }>
         {
             items?.map((item, index) => {
-                return <Picker.Item key={index} label={item.label} value={item.key} />
+                return <Picker.Item key={index} label={item.label} value={item.value} />
             })
         }
         </Picker>
