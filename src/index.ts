@@ -27,6 +27,7 @@ import { TextBoxItemPropsMJB, TextBoxPropsMJB } from "./components/molecules/Tex
 import FlatListMJB, { FlatListPropsMJB } from "./components/molecules/FlatListMJB/FlatListMJB";
 import MultiButtonMjB, { ButtonItemPropsMJB, MultiButtonPropsMJB } from "./components/atoms/MultiButtion/MultiButton";
 import  { PickerDropdownMJB, PickerItemMJB, PickerPropsInputMJB } from "./components/atoms/PickerDropdown/PickerDropdown";
+import PaginationMJB, { PaginationPropsMJB } from "./components/molecules/Pagination/Pagination";
 /**
  * All customs styled components for MJB
  */
@@ -51,6 +52,9 @@ export const BigModalDrawer = BigModalDrawerMJB
 export const FilePikerInput = FileUploaderInputMJB
 export const ModalwithBackground = ModalwithBackgroundMJB
 export const useInfoModal = useInfoModalV2
+
+export const Pagination = PaginationMJB
+export type PaginationProps = PaginationPropsMJB
 
 /**
  * Type exports
