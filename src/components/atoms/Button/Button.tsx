@@ -7,6 +7,7 @@ import { Pressable, PressableProps, StyleProp, Text, View, ViewStyle, StyleSheet
 
 import { FC } from 'react';
 import { useThemeMJB } from '../../../ThemeProvider/ThemeProvider';
+import { Loader } from '../../..';
 export interface ButtonProps extends PressableProps {
   /**
    * Name / Label of the button.
@@ -28,13 +29,22 @@ export interface ButtonProps extends PressableProps {
      * Icon Components to display in the button
      */
     IconComponent?: FC
+
+    /**
+   * Icon Components to display in the button
+   */
+    IconComponentRight?: FC
+
+    isLoading?: boolean,
+
+    spaceBetween?: boolean
 }
 /**
  * Button component MJB
  * @param param0 
  * @returns 
  */
-function Button({name, styleType, style, textStyle,IconComponent, disabled, ...otherProps}: ButtonProps) {
+function Button({name, styleType, style, textStyle,IconComponent, disabled, isLoading, IconComponentRight, spaceBetween, ...otherProps}: ButtonProps) {
 
   const {theme: {color, fontFamily}} = useThemeMJB()
 
@@ -52,7 +62,7 @@ function Button({name, styleType, style, textStyle,IconComponent, disabled, ...o
         height: 50,
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: spaceBetween ? 'space-between' : 'center',
         alignItems: 'center',
         borderRadius: 18,
         maxWidth: 500,
@@ -65,7 +75,7 @@ function Button({name, styleType, style, textStyle,IconComponent, disabled, ...o
         height: 50,
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: spaceBetween ? 'space-between' : 'center',
         alignItems: 'center',
         borderRadius: 18,
         maxWidth: 500,
@@ -91,11 +101,23 @@ function Button({name, styleType, style, textStyle,IconComponent, disabled, ...o
   })
 
   return (
-    <Pressable disabled={disabled} {...otherProps} style={[styles['container'],styles['container'+'--'+styleClassName], style, disabled && (styles['container--disabled']) ]}>
-     {IconComponent &&
+    <Pressable disabled={disabled || isLoading} {...otherProps} style={[styles['container'],styles['container'+'--'+styleClassName], style, disabled && (styles['container--disabled']) ]}>
+
+
+     {IconComponent && !isLoading &&
      <View><IconComponent/></View> 
       }
+      {!isLoading &&
      <Text style={[styles['text'], styles['text'+'--'+styleClassName], textStyle || {}, styleText.text]}>{name}</Text>
+      }
+
+      {isLoading &&
+
+        <Loader size={25} color={color.secondary.normal}/>
+      }
+      {IconComponentRight && !isLoading &&
+      <View><IconComponentRight/></View> 
+        }
     </Pressable>
   )
 

@@ -28,6 +28,7 @@ import FlatListMJB, { FlatListPropsMJB } from "./components/molecules/FlatListMJ
 import MultiButtonMjB, { ButtonItemPropsMJB, MultiButtonPropsMJB } from "./components/atoms/MultiButtion/MultiButton";
 import  { PickerDropdownMJB, PickerItemMJB, PickerPropsInputMJB } from "./components/atoms/PickerDropdown/PickerDropdown";
 import PaginationMJB, { PaginationPropsMJB } from "./components/molecules/Pagination/Pagination";
+import LoaderMJB, { LoaderPropsMJB } from "./components/atoms/Loader/Loader";
 /**
  * All customs styled components for MJB
  */
@@ -74,5 +75,9 @@ export type ButtonItemProps = ButtonItemPropsMJB
 export const PickerDropdown =  PickerDropdownMJB
 export type PickerPropsInput = PickerPropsInputMJB
 export type PickerItem = PickerItemMJB
+
+//Loader
+export type LoaderProps = LoaderPropsMJB
+export const Loader = LoaderMJB
 
 
